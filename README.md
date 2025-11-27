@@ -50,7 +50,7 @@ Projetos onde aplico tecnologia para otimizar processos e gerar valor:
 | **[Dashboard Sinistros](https://github.com/danilogep/Dashboard-Analise-Sinistros-PRF-PowerBI)** | Power BI, DAX | **Intelligence:** Análise visual de padrões de acidentes da PRF para suporte estratégico à tomada de decisão. |
 | **[Store API (TDD)](https://github.com/danilogep/TDD-Project-API-Store)** | Python, Pytest, Mongo | **Engenharia de Software:** API desenvolvida com TDD (Red-Green-Refactor) focada na qualidade de código. |
 | **[API Bancária](https://github.com/danilogep/API-bancaria)** | SQLModel, JWT, Bcrypt | **Segurança:** Sistema bancário com autenticação robusta e criptografia, garantindo integridade das transações. |
-| **[ETL com IA](https://github.com/danilogep/ETL-PRF-IA-Generativa)** | Python, OpenAI GPT-4 | **Inovação:** Pipeline que usa IA Generativa para criar mensagens de segurança personalizadas baseadas em dados. |
+| **[ETL com IA](https://github.com/danilogep/ETL-PRF-IA-Generativa)** | Python, API do Google Gemini | **Inovação:** Pipeline que usa IA Generativa para criar mensagens de segurança personalizadas baseadas em dados. |
 
 ---
 
