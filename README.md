@@ -49,15 +49,10 @@ Entrego soluções ponta a ponta: desde **APIs robustas (Python/FastAPI)** até 
 
 ---
 
-<div align="center">
-
 ### 📊 GitHub Stats
 
-<img src="https://github-readme-stats.vercel.app/api?username=danilogep&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true" height="180px"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=danilogep&layout=compact&theme=tokyonight" height="180px"/>
-
-</div>
-
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=danilogep&show_icons=true&theme=dark)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=danilogep&layout=compact&theme=dark)
 ---
 
 ### 🎓 Background
