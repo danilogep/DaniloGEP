@@ -51,8 +51,11 @@ Entrego soluções ponta a ponta: desde **APIs robustas (Python/FastAPI)** até 
 
 ### 📊 GitHub Stats
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=danilogep&show_icons=true&theme=dark)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=danilogep&layout=compact&theme=dark)
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=danilogep&show_icons=true&theme=dark&hide_border=true" alt="DaniloGEP Stats" height="180px" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=danilogep&layout=compact&theme=dark&hide_border=true" alt="DaniloGEP Languages" height="180px" />
+</p>
+
 ---
 
 ### 🎓 Background
