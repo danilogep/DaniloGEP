@@ -3,9 +3,9 @@
 ### Eu entrego o sistema inteiro — e com o número que prova que ele funciona.
 
 Back-end em **Python/FastAPI**, interface em **React/TypeScript**, banco modelado, suíte de
-testes, Docker e CI. Não paro no protótipo: cada projeto aqui sobe com um comando, tem
-teste automatizado e traz a medição do que ele faz — inclusive quando a medição contraria
-o que eu esperava.
+testes, Docker e CI. Não paro no protótipo: o que está aberto aqui sobe com um comando, tem
+teste automatizado e traz a medição do que faz — inclusive quando a medição contraria o que
+eu esperava.
 
 **235 testes automatizados** · **CI verde em 5 repositórios** · **tudo com `docker compose up`**
 
@@ -15,6 +15,53 @@ o que eu esperava.
 ---
 
 ## Em destaque
+
+### EFV Brasil — triagem de adulteração em numeração de motor
+
+[![Código fechado](https://img.shields.io/badge/código-fechado-5a5a5a?style=flat-square&logo=github&logoColor=white)](#)
+[![PWA em campo](https://img.shields.io/badge/formato-PWA%20instalável-5e35b1?style=flat-square)](#)
+[![~20 mil linhas](https://img.shields.io/badge/~20%20mil-linhas-1f6feb?style=flat-square)](#)
+
+O maior sistema que construí. Um agente de fiscalização fotografa a numeração gravada no
+bloco do motor de uma motocicleta, pelo celular, e recebe em segundos uma triagem sobre a
+possibilidade de a gravação ter sido adulterada — para decidir **se aquele caso merece
+perícia**, não para substituí-la.
+
+**Por que o código é fechado:** o valor da ferramenta está em reconhecer o que o
+falsificador não sabe que está errando. Publicar os critérios de decisão entrega o manual
+de como contorná-los. É a única razão de este repositório ser privado — e é a mesma razão
+pela qual, aqui, eu falo de engenharia e não de método.
+
+O que dá para contar:
+
+- **Visão computacional + aprendizado de máquina em um só veredito.** OCR localiza cada
+  caractere, uma CNN julga a forma contra uma base de **183 templates tipográficos** do
+  fabricante, e um conjunto de classificadores pesa isso junto com medidas de textura e
+  geometria. Inferência em CPU, para caber em deploy barato.
+- **Contrato de paridade entre o treino e a produção.** Os extratores de atributo do
+  back-end espelham o notebook de treino. Mudar um sem replicar no outro não quebra nada
+  visivelmente — só degrada o modelo em silêncio, que é o pior tipo de defeito. Um
+  *harness* de imagens-douradas compara as duas saídas e trava a divergência antes do
+  deploy.
+- **A foto ruim é recusada antes de gastar inferência.** Foco, brilho, contraste e
+  resolução passam por um detector de qualidade: numeração fotografada contra o sol não
+  vira um palpite com cara de resultado.
+- **Segurança tratada como requisito, não como depois.** Senhas em bcrypt, sessão por
+  token, upload validado por *magic bytes* com teto de megapixels contra bomba de
+  descompressão, EXIF removido antes de persistir, e limite de requisição por IP real
+  atrás do proxy.
+- **O resultado mais recente cortou o falso alarme à metade sem perder uma única
+  detecção.** Em uma ferramenta de triagem, falso positivo é tempo de agente e de cidadão
+  parados na estrada — é o número que importa depois que a detecção já funciona.
+
+Acompanha um módulo de ensino dentro do próprio app, para treinar a análise visual de quem
+usa a ferramenta.
+
+`Python` `FastAPI` `PyTorch` `scikit-learn` `EasyOCR` `OpenCV` `PWA` `Docker`
+
+> Posso apresentar a arquitetura, o código e as decisões em uma conversa. É só pedir.
+
+---
 
 ### XiloScan — identificação de madeira por foto
 
@@ -124,7 +171,7 @@ estimativa simpática — como na tabela de desempenho do XiloScan, que espera u
 
 **Back-end** Python · FastAPI · SQLAlchemy 2.0 assíncrono · Pydantic v2 · Alembic
 **Dados** PostgreSQL · MySQL · MongoDB · Power BI · pandas
-**ML / Visão** PyTorch · timm · FAISS · OpenCV
+**ML / Visão** PyTorch · scikit-learn · timm · FAISS · OpenCV · EasyOCR
 **Front-end** TypeScript · React 19 · Vite · Chakra UI
 **Infra** Docker · Docker Compose · GitHub Actions · nginx · Railway
 **Qualidade** pytest · pytest-asyncio · testcontainers · ruff · pre-commit
