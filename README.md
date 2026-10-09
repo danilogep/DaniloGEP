@@ -147,10 +147,16 @@ Python *(DIO)*
 
 <div align="center">
 
-### Procuro oportunidades como desenvolvedor back-end ou full stack Python
+### Trabalho por projeto
 
-Também aceito projetos pontuais de **API**, **modelagem e otimização de banco** e
-**automação de dados**.
+Escopo fechado, prazo combinado, remoto. O que eu pego:
+
+**API e back-end** em Python/FastAPI &nbsp;·&nbsp; **Modelagem e otimização de banco** em
+MySQL e PostgreSQL &nbsp;·&nbsp; **Automação e pipelines de dados** &nbsp;·&nbsp;
+**Dashboards** em Power BI
+
+Me descreva o problema em duas linhas. Respondo com escopo, prazo e orçamento —
+e, se não for trabalho para mim, eu digo.
 
 [![LinkedIn](https://img.shields.io/badge/Conversar_no_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/danilogep)
 [![Email](https://img.shields.io/badge/danilo.gep@gmail.com-c14438?style=for-the-badge&logo=gmail&logoColor=white)](mailto:danilo.gep@gmail.com)
