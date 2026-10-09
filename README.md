@@ -7,7 +7,7 @@ testes, Docker e CI. Não paro no protótipo: o que está aberto aqui sobe com u
 teste automatizado e traz a medição do que faz — inclusive quando a medição contraria o que
 eu esperava.
 
-**235 testes automatizados** · **CI verde em 5 repositórios** · **tudo com `docker compose up`**
+**Um produto no ar, com domínio próprio** · **235 testes automatizados** · **CI verde em 5 repositórios**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-conversar-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/danilogep)
 [![Email](https://img.shields.io/badge/Email-danilo.gep@gmail.com-c14438?style=flat-square&logo=gmail&logoColor=white)](mailto:danilo.gep@gmail.com)
@@ -18,44 +18,49 @@ eu esperava.
 
 ### EFV Brasil — triagem de adulteração em numeração de motor
 
+[![No ar](https://img.shields.io/badge/no%20ar-efvbrasil.com.br-f0a500?style=flat-square)](https://efvbrasil.com.br)
 [![Código fechado](https://img.shields.io/badge/código-fechado-5a5a5a?style=flat-square&logo=github&logoColor=white)](#)
-[![PWA em campo](https://img.shields.io/badge/formato-PWA%20instalável-5e35b1?style=flat-square)](#)
-[![~20 mil linhas](https://img.shields.io/badge/~20%20mil-linhas-1f6feb?style=flat-square)](#)
+[![PWA](https://img.shields.io/badge/formato-PWA%20instalável-5e35b1?style=flat-square)](https://efvbrasil.com.br)
 
-O maior sistema que construí. Um agente de fiscalização fotografa a numeração gravada no
-bloco do motor de uma motocicleta, pelo celular, e recebe em segundos uma triagem sobre a
-possibilidade de a gravação ter sido adulterada — para decidir **se aquele caso merece
-perícia**, não para substituí-la.
+<a href="https://efvbrasil.com.br">
+  <img src="img/efv-brasil.png" alt="Página inicial do EFV Brasil, com um exemplo de resultado de análise" width="100%">
+</a>
 
-**Por que o código é fechado:** o valor da ferramenta está em reconhecer o que o
-falsificador não sabe que está errando. Publicar os critérios de decisão entrega o manual
-de como contorná-los. É a única razão de este repositório ser privado — e é a mesma razão
-pela qual, aqui, eu falo de engenharia e não de método.
+O maior sistema que construí, **em produção e com domínio próprio**. Um agente de
+fiscalização fotografa pelo celular a numeração gravada no bloco do motor de uma
+motocicleta e recebe, em segundos, uma triagem sobre a possibilidade de aquela gravação ter
+sido adulterada — para decidir **se o caso merece perícia**, nunca para substituí-la.
 
-O que dá para contar:
+**[efvbrasil.com.br](https://efvbrasil.com.br)** &nbsp;·&nbsp; API na versão 10.3,
+modelo na 18.2 &nbsp;·&nbsp; ~20 mil linhas &nbsp;·&nbsp; Python, PyTorch e scikit-learn em
+CPU
 
-- **Visão computacional + aprendizado de máquina em um só veredito.** OCR localiza cada
-  caractere, uma CNN julga a forma contra uma base de **183 templates tipográficos** do
+**O produto é público; o código, não.** O valor da ferramenta está em reconhecer o que o
+falsificador não sabe que está errando, e publicar os critérios de decisão entregaria o
+manual de como contorná-los. É a única razão de o repositório ser privado — e é por isso
+que, aqui, eu falo de engenharia e não de método.
+
+- **Visão computacional e aprendizado de máquina em um só veredito.** OCR localiza cada
+  caractere, uma CNN julga a forma contra uma base de **182 templates tipográficos** do
   fabricante, e um conjunto de classificadores pesa isso junto com medidas de textura e
-  geometria. Inferência em CPU, para caber em deploy barato.
+  geometria — 173 atributos em uma inferência que roda em CPU, para caber em deploy barato.
 - **Contrato de paridade entre o treino e a produção.** Os extratores de atributo do
   back-end espelham o notebook de treino. Mudar um sem replicar no outro não quebra nada
   visivelmente — só degrada o modelo em silêncio, que é o pior tipo de defeito. Um
-  *harness* de imagens-douradas compara as duas saídas e trava a divergência antes do
-  deploy.
+  *harness* de imagens-douradas compara as duas saídas e trava a divergência antes do deploy.
 - **A foto ruim é recusada antes de gastar inferência.** Foco, brilho, contraste e
-  resolução passam por um detector de qualidade: numeração fotografada contra o sol não
-  vira um palpite com cara de resultado.
-- **Segurança tratada como requisito, não como depois.** Senhas em bcrypt, sessão por
-  token, upload validado por *magic bytes* com teto de megapixels contra bomba de
-  descompressão, EXIF removido antes de persistir, e limite de requisição por IP real
-  atrás do proxy.
-- **O resultado mais recente cortou o falso alarme à metade sem perder uma única
-  detecção.** Em uma ferramenta de triagem, falso positivo é tempo de agente e de cidadão
-  parados na estrada — é o número que importa depois que a detecção já funciona.
+  resolução passam por um detector de qualidade: gravação fotografada contra o sol não vira
+  um palpite com cara de resultado.
+- **Segurança como requisito, não como remendo.** Senhas em bcrypt, sessão por token,
+  upload validado por *magic bytes* com teto de megapixels contra bomba de descompressão,
+  EXIF removido antes de persistir, limite de requisição por IP real atrás do proxy.
+- **A última iteração cortou o falso alarme à metade sem perder uma única detecção.** Em
+  triagem, falso positivo é tempo de agente e de cidadão parados na estrada — é o número
+  que passa a importar depois que a detecção já funciona.
 
-Acompanha um módulo de ensino dentro do próprio app, para treinar a análise visual de quem
-usa a ferramenta.
+A interface entrega o resultado em linguagem direta e diz o que chamou atenção, em vez de
+um número sozinho. Acompanha um módulo de ensino dentro do próprio app, para treinar a
+análise visual de quem usa a ferramenta.
 
 `Python` `FastAPI` `PyTorch` `scikit-learn` `EasyOCR` `OpenCV` `PWA` `Docker`
 
